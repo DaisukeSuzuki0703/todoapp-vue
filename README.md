@@ -23,7 +23,7 @@ npm run lint
 ### Customize configuration
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
-##ディレクトリ構造
+###ディレクトリ構造
 ```
 src
 ├assets
