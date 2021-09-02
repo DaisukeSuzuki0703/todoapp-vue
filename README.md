@@ -24,6 +24,7 @@ npm run lint
 See [Configuration Reference](https://cli.vuejs.org/config/).
 
 ##ディレクトリ構造
+```
 src
 ├assets
 ├components
@@ -33,4 +34,5 @@ src
 ├App.vue
 ├main.js
 └router.js
+```
 
