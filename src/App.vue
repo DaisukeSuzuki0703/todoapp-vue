@@ -1,24 +1,29 @@
 <template>
   <div id="app">
     <h1>TodoApp</h1>
-    <app-header></app-header>
-    <app-footer></app-footer>
+    <div class="container">
+      <app-sidevar-navi></app-sidevar-navi>
+      <app-todo></app-todo>
+    </div>
   </div>
 </template>
 
 <script>
-import Header from './components/Header.vue'
-import Footer from './components/Footer.vue'
+import Todo from './container/Todo'
+import SidevarNavi from './components/SidevarNavi.vue'
 
 export default {
   name: 'App',
   components: {
-    AppHeader: Header,
-    AppFooter: Footer,
+    AppTodo: Todo,
+    AppSidevarNavi: SidevarNavi,
   }
 }
 </script>
 
-<style>
-
+<style scoped>
+.container {
+  display: flex;
+  align-items: flex-start;
+}
 </style>
