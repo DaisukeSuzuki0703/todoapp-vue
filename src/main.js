@@ -9,6 +9,9 @@ import { library } from '@fortawesome/fontawesome-svg-core'
 import { faThList, faCheckCircle, faBomb } from '@fortawesome/free-solid-svg-icons'
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
+// resetcss
+import css from './css/style.css'
+
 library.add(faThList, faCheckCircle, faBomb);
 
 Vue.component('font-awesome-icon', FontAwesomeIcon)
@@ -25,5 +28,6 @@ const router = new VueRouter({
 new Vue({
   store,
   router,
+  css,
   render: h => h(App),
 }).$mount('#app')
