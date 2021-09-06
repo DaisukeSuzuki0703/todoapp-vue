@@ -10,7 +10,7 @@ import { faThList, faCheckCircle, faBomb } from '@fortawesome/free-solid-svg-ico
 import { FontAwesomeIcon } from '@fortawesome/vue-fontawesome'
 
 // resetcss
-import css from './css/reset.css'
+import css from './css/style.css'
 
 library.add(faThList, faCheckCircle, faBomb);
 

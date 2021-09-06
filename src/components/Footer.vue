@@ -1,5 +1,5 @@
 <template>
   <footer>
-    <p>ここはフッターです。</p>
+    <p>Footer</p>
   </footer>
 </template>

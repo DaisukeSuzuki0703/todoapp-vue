@@ -1,5 +1,5 @@
 <template>
   <header>
-    <p>これはヘッダーです。</p>
+    <p>Header</p>
   </header>
 </template>
