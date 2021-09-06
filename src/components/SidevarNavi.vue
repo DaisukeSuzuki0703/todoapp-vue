@@ -1,9 +1,9 @@
 <template>
   <aside class="sidevar">
     <ul class="icon__list">
-      <li class="icon"><font-awesome-icon icon="th-list" class="fa-2x"/></li>
-      <li class="icon"><font-awesome-icon icon="check-circle" class="fa-2x"/></li>
-      <li class="icon"><font-awesome-icon icon="bomb" class="fa-2x"/></li>
+      <li class="icon"><router-link to="/" class="icon__link"><font-awesome-icon icon="th-list" class="fa-2x"/></router-link></li>
+      <li class="icon"><router-link to="/comlete" class="icon__link"><font-awesome-icon icon="check-circle" class="fa-2x"/></router-link></li>
+      <li class="icon"><router-link to="/uncomplete" class="icon__link"><font-awesome-icon icon="bomb" class="fa-2x"/></router-link></li>
     </ul>
   </aside>
 </template>
@@ -24,6 +24,10 @@ ul {
 }
 .icon {
   margin-bottom: 30px;
+}
+.icon__link {
+  text-decoration: none;
+  color: #696969;
 }
 .sidevar {
   width: 20%;
