@@ -1,18 +1,16 @@
 <template>
   <div class="todos">
-    <app-header></app-header>
-    <app-footer></app-footer>
+    <app-wrapper>
+    </app-wrapper>
   </div>
 </template>
 
 <script>
-import Header from '../components/Header.vue'
-import Footer from '../components/Footer.vue'
+import Wrapper from '../components/Wrapper'
 
 export default ({
   components: {
-    AppHeader: Header,
-    AppFooter: Footer,
+    AppWrapper: Wrapper,
   }
 })
 </script>
@@ -21,5 +19,6 @@ export default ({
   width: 80%;
   height: 100%;
   background-color: #fff;
+  /* padding: 20px; */
 }
 </style>
