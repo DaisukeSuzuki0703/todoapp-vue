@@ -2,8 +2,11 @@
   <div class="wrapper">
     <app-header></app-header>
     <main class="main">
-      <!-- ここにTODOのメインが入る -->
-    </main>
+        <slot />
+        <div class="todos">
+          <slot name="todos" />
+        </div>
+      </main>
     <app-footer></app-footer>
   </div>
 </template>
@@ -23,5 +26,8 @@ export default ({
 <style scoped>
 .wrapper {
   padding: 20px;
+}
+.main {
+  width: 100%;
 }
 </style>
