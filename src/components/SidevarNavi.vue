@@ -11,7 +11,7 @@
 <style scoped>
 ul {
   padding: 0;
-  margin: 0;
+  margin: 0; 
 }
 .icon__list {
   height: 100%;
