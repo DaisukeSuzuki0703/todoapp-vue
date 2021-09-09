@@ -8,7 +8,6 @@
       placeholder="input your Todo title"
       v-model="targetTodoText"
     />
-    {{targetTodoText}}
     <label for="inputDetail">Detail</label>
     <input
       type="text"
@@ -17,7 +16,6 @@
       placeholder="input your Todo detail"
       v-model="targetTodoDetail"
     />
-    {{targetTodoDetail}}
   </div>
 </template>
 
