@@ -1,18 +1,19 @@
 <template>
   <div class="todos">
-    <app-header></app-header>
-    <app-footer></app-footer>
+    <app-wrapper>
+      <app-resister></app-resister>
+    </app-wrapper>
   </div>
 </template>
 
 <script>
-import Header from '../components/Header.vue'
-import Footer from '../components/Footer.vue'
+import Wrapper from '../components/Wrapper'
+import Resister from '../components/Resister'
 
 export default ({
   components: {
-    AppHeader: Header,
-    AppFooter: Footer,
+    AppWrapper: Wrapper,
+    AppResister: Resister,
   }
 })
 </script>
@@ -21,5 +22,6 @@ export default ({
   width: 80%;
   height: 100%;
   background-color: #fff;
+  /* padding: 20px; */
 }
 </style>
