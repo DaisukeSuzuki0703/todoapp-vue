@@ -21,12 +21,19 @@ export default new Vuex.Store({
       state.targetTodo[payload.name] = payload.value;
     },
     getItem(state) {
-      state.todos= JSON.parse(localStorage.getItem(state.todoKeyWord));
+      const targetTodos = JSON.parse(localStorage.getItem(state.todoKeyWord))
+      state.todos.push(...targetTodos);
     },
     resisterTodo(state, targetTodo) {
-      state.todos.push(targetTodo);
+      state.todos.unshift(targetTodo);
       localStorage.setItem(state.todoKeyWord, JSON.stringify(state.todos));
     },
+    editTodo(state) {
+      console.log(state, "edit");
+    },
+    deleteTodo(state) {
+      console.log(state, "delete");
+    }
   },
   actions: {
     updateTextValue({commit}, {value, name}) {
@@ -46,5 +53,11 @@ export default new Vuex.Store({
       state.targetTodo.title = '';
       state.targetTodo.detail = '';
     },
+    editTodo({commit}) {
+      commit("editTodo")
+    },
+    deleteTodo({commit}) {
+      commit("deleteTodo")
+    }
   }
 });

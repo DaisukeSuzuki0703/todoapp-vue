@@ -5,8 +5,8 @@
       <p>Detail: {{todo.detail}}</p>
     </div>
     <div>
-      <button>Edit</button>
-      <button>Delete</button>
+      <button @click="editTodo">Edit</button>
+      <button @click="deleteTodo">Delete</button>
     </div>
   </li>
 </template>
@@ -25,6 +25,14 @@ export default ({
       }
     }
   },
+  methods: {
+    editTodo() {
+      this.$store.dispatch("editTodo");
+    },
+    deleteTodo() {
+      this.$store.dispatch("deleteTodo");
+    }
+  }
 })
 </script>
 
@@ -39,5 +47,9 @@ p {
   align-items: center;
   padding: 10px;
   background-color: #f5f5f5;
+  margin-bottom: 10px;
+}
+.todo__item:last-child {
+  margin-bottom: 0;
 }
 </style>
