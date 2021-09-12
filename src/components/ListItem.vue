@@ -6,7 +6,7 @@
     </div>
     <div>
       <button @click="editTodo">Edit</button>
-      <button @click="deleteTodo">Delete</button>
+      <button @click="deleteTodo(todo.id)">Delete</button>
     </div>
   </li>
 </template>
@@ -29,8 +29,9 @@ export default ({
     editTodo() {
       this.$store.dispatch("editTodo");
     },
-    deleteTodo() {
-      this.$store.dispatch("deleteTodo");
+    deleteTodo(targetId) {
+      this.$store.dispatch("deleteTodo", targetId);
+
     }
   }
 })

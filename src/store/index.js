@@ -33,8 +33,12 @@ export default new Vuex.Store({
     editTodo(state) {
       console.log(state, "edit");
     },
-    deleteTodo(state) {
-      console.log(state, "delete");
+    deleteTodo(state, targetId) {
+      const newTodos = state.todos.filter(todo => {
+        return todo.id !== targetId;
+      })
+      state.todos = newTodos;
+      localStorage.setItem(state.todoKeyWord, JSON.stringify(state.todos));
     }
   },
   actions: {
@@ -44,12 +48,12 @@ export default new Vuex.Store({
     getItem({commit}) {
       commit("getItem");
     },
-    resisterTodo({commit, state}) {
+    resisterTodo({ commit, state }) {
       let targetTodoLength = state.todos.length + 1;
       const targetTodo = Object.assign({}, {
         title: state.targetTodo.title,
         detail: state.targetTodo.detail,
-        id: targetTodoLength++,
+        id: targetTodoLength,
         completed: false,
       })
       commit('resisterTodo', targetTodo);
@@ -59,8 +63,8 @@ export default new Vuex.Store({
     editTodo({commit}) {
       commit("editTodo")
     },
-    deleteTodo({commit}) {
-      commit("deleteTodo")
+    deleteTodo({ commit }, targetId) {
+      commit("deleteTodo", targetId)
     }
   }
 });
