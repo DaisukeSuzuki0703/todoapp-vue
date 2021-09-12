@@ -32,5 +32,7 @@ export default {
   list-style: none;
   padding: 0;
   margin: 0;
+  max-height: 320px;
+  overflow: scroll;
 }
 </style>
