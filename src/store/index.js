@@ -20,14 +20,20 @@ export default new Vuex.Store({
     updateTextValue(state, payload) {
       state.targetTodo[payload.name] = payload.value;
     },
+    getItem(state) {
+      state.todos= JSON.parse(localStorage.getItem(state.todoKeyWord));
+    },
     resisterTodo(state, targetTodo) {
       state.todos.push(targetTodo);
       localStorage.setItem(state.todoKeyWord, JSON.stringify(state.todos));
-    }
+    },
   },
   actions: {
     updateTextValue({commit}, {value, name}) {
       commit('updateTextValue', {value, name});
+    },
+    getItem({commit}) {
+      commit("getItem");
     },
     resisterTodo({commit, state}) {
       const targetTodo = Object.assign({}, {
@@ -39,6 +45,6 @@ export default new Vuex.Store({
       commit('resisterTodo', targetTodo);
       state.targetTodo.title = '';
       state.targetTodo.detail = '';
-    }
+    },
   }
 });
