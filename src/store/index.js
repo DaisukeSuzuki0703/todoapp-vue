@@ -21,8 +21,10 @@ export default new Vuex.Store({
       state.targetTodo[payload.name] = payload.value;
     },
     getItem(state) {
-      const targetTodos = JSON.parse(localStorage.getItem(state.todoKeyWord))
-      state.todos.push(...targetTodos);
+      const targetTodos = JSON.parse(localStorage.getItem(state.todoKeyWord));
+      if(targetTodos !== null) {
+        state.todos.push(...targetTodos);
+      }
     },
     resisterTodo(state, targetTodo) {
       state.todos.unshift(targetTodo);
@@ -43,10 +45,11 @@ export default new Vuex.Store({
       commit("getItem");
     },
     resisterTodo({commit, state}) {
+      let targetTodoLength = state.todos.length + 1;
       const targetTodo = Object.assign({}, {
         title: state.targetTodo.title,
         detail: state.targetTodo.detail,
-        id: state.targetTodo.id++,
+        id: targetTodoLength++,
         completed: false,
       })
       commit('resisterTodo', targetTodo);
