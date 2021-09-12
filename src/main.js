@@ -29,5 +29,8 @@ new Vue({
   store,
   router,
   css,
+  beforeCreate() {
+    this.$store.dispatch('getItem');
+  },
   render: h => h(App),
 }).$mount('#app')
