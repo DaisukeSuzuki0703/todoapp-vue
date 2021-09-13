@@ -7,12 +7,12 @@ const routes = [
   },
   {
     name: 'Top',
-    path: '/complete',
+    path: '/finished',
     component: Todo,
   },
   {
     name: 'Top',
-    path: '/uncomplete',
+    path: '/unfinish',
     component: Todo,
   },
 ];
