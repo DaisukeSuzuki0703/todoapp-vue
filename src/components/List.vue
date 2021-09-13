@@ -33,6 +33,18 @@ export default {
   padding: 0;
   margin: 0;
   max-height: 320px;
-  overflow: scroll;
+  overflow-y: scroll;
+}
+.todo__list::-webkit-scrollbar {
+  width: 10px;
+  height: 10px;
+}
+.todo__list::-webkit-scrollbar-track {
+  background: #ffe6ea;
+  box-shadow:0 0 2px #ff99aa inset ;
+}
+.todo__list::-webkit-scrollbar-thumb {
+  background: #ffb6c1;
+  border-radius: 5px;
 }
 </style>
