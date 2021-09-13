@@ -40,8 +40,7 @@ export default {
   height: 10px;
 }
 .todo__list::-webkit-scrollbar-track {
-  background: #ffe6ea;
-  box-shadow:0 0 2px #ff99aa inset ;
+  background-color: transparent;
 }
 .todo__list::-webkit-scrollbar-thumb {
   background: #ffb6c1;
