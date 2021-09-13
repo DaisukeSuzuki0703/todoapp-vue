@@ -33,6 +33,7 @@ export default {
   padding: 0;
   margin: 0;
   max-height: 320px;
+  border-radius: 10px;
   overflow-y: scroll;
 }
 .todo__list::-webkit-scrollbar {

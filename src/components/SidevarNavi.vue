@@ -2,8 +2,8 @@
   <aside class="sidevar">
     <ul class="icon__list">
       <li class="icon"><router-link to="/" class="icon__link" exact active-class="icon__link__active"><font-awesome-icon icon="th-list" class="fa-2x"/></router-link></li>
-      <li class="icon"><router-link to="/comlete" class="icon__link" exact active-class="icon__link__active"><font-awesome-icon icon="check-circle" class="fa-2x"/></router-link></li>
-      <li class="icon"><router-link to="/uncomplete" class="icon__link" exact active-class="icon__link__active"><font-awesome-icon icon="bomb" class="fa-2x"/></router-link></li>
+      <li class="icon"><router-link to="/finished" class="icon__link" exact active-class="icon__link__active"><font-awesome-icon icon="check-circle" class="fa-2x"/></router-link></li>
+      <li class="icon"><router-link to="/unfinish" class="icon__link" exact active-class="icon__link__active"><font-awesome-icon icon="bomb" class="fa-2x"/></router-link></li>
     </ul>
   </aside>
 </template>
