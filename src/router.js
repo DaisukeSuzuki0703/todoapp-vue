@@ -1,18 +1,18 @@
 import Todo from './App.vue'
 const routes = [
   {
-    name: 'Top',
+    name: 'all',
     path: '/',
     component: Todo,
   },
   {
-    name: 'Top',
-    path: '/complete',
+    name: 'finished',
+    path: '/finished',
     component: Todo,
   },
   {
-    name: 'Top',
-    path: '/uncomplete',
+    name: 'unfinish',
+    path: '/unfinish',
     component: Todo,
   },
 ];

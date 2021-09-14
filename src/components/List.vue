@@ -23,6 +23,11 @@ export default {
       },
     },
   },
+  computed: {
+    todoFilter() {
+      return this.$store.state.todoFilter;
+    }
+  }
 };
 </script>
 
@@ -33,6 +38,7 @@ export default {
   padding: 0;
   margin: 0;
   max-height: 320px;
+  border-radius: 10px;
   overflow-y: scroll;
 }
 .todo__list::-webkit-scrollbar {
@@ -40,8 +46,7 @@ export default {
   height: 10px;
 }
 .todo__list::-webkit-scrollbar-track {
-  background: #ffe6ea;
-  box-shadow:0 0 2px #ff99aa inset ;
+  background-color: transparent;
 }
 .todo__list::-webkit-scrollbar-thumb {
   background: #ffb6c1;

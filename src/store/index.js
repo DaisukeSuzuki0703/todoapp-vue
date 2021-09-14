@@ -8,15 +8,23 @@ export default new Vuex.Store({
   state: {
     todoKeyWord: 'Todos',
     todos: [],
+    todoFilter: '',
     targetTodo: {
       id: 1,
       title: '',
       detail: '',
       completed: false,
     },
-
+  },
+  getters: {
+    finished: (state) => state.todos.filter((todo) => todo.completed),
+    unfinish: (state) => state.todos.filter((todo) => !todo.completed),
   },
   mutations: {
+    setTodoFilter(state, routeName) {
+      console.log(routeName)
+      state.todoFilter = routeName;
+    },
     updateTextValue(state, payload) {
       state.targetTodo[payload.name] = payload.value;
     },
@@ -39,9 +47,15 @@ export default new Vuex.Store({
       })
       state.todos = newTodos;
       localStorage.setItem(state.todoKeyWord, JSON.stringify(state.todos));
+    },
+    changeCompleted(state, todo) {
+      state.targetTodo.completed = todo.completed;
     }
   },
   actions: {
+    setTodoFilter({commit}, routeName) {
+      commit("setTodoFilter", routeName);
+    },
     updateTextValue({commit}, {value, name}) {
       commit('updateTextValue', {value, name});
     },
@@ -65,6 +79,10 @@ export default new Vuex.Store({
     },
     deleteTodo({ commit }, targetId) {
       commit("deleteTodo", targetId)
+    },
+    changeCompleted({commit}, todo) {
+      todo.completed = !todo.completed;
+      commit("changeCompleted", todo);
     }
   }
 });
