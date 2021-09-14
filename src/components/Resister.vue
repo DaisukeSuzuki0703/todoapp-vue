@@ -61,7 +61,7 @@ export default {
 
 <style scoped>
 .todo__box {
-  margin-bottom: 20px;
+  margin-bottom: 10px;
 }
 .todo__box > label {
   font-size: 16px;
