@@ -1,5 +1,5 @@
 <template>
-  <ul class="todo__list">
+  <ul class="todo__list" :class="[todoFilter !== 'all' ? 'is-large' : '']">
     <app-list-item
       v-for="todo in todos"
       :key="todo.id"
@@ -26,8 +26,8 @@ export default {
   computed: {
     todoFilter() {
       return this.$store.state.todoFilter;
-    }
-  }
+    },
+  },
 };
 </script>
 
@@ -37,9 +37,12 @@ export default {
   list-style: none;
   padding: 0;
   margin: 0;
-  max-height: 320px;
+  max-height: 436px;
   border-radius: 10px;
   overflow-y: scroll;
+}
+.todo__list.is-large {
+  max-height: 560px;
 }
 .todo__list::-webkit-scrollbar {
   width: 10px;
