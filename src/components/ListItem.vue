@@ -50,6 +50,9 @@ export default {
     deleteTodo(targetId) {
       this.$store.dispatch("deleteTodo", targetId);
     },
+    changeCompleted(todo) {
+      this.$store.dispatch("changeCompleted", todo);
+    }
   },
 };
 </script>
@@ -66,7 +69,7 @@ button {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 10px;
+  padding: 9px;
   background-color: #f5f5f5;
   margin-bottom: 10px;
   border-radius: 10px;

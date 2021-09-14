@@ -23,6 +23,11 @@ export default {
       },
     },
   },
+  computed: {
+    todoFilter() {
+      return this.$store.state.todoFilter;
+    }
+  }
 };
 </script>
 

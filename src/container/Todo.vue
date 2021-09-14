@@ -1,8 +1,10 @@
 <template>
   <div class="todos">
     <app-wrapper>
-      <app-resister></app-resister>
-      <app-list :todos="todos"></app-list>
+      <app-resister v-if="todoFilter === 'all'"></app-resister>
+      <template v-slot:todos>
+        <app-list :todos="todos" v-if="todos.length"></app-list>
+      </template>
     </app-wrapper>
   </div>
 </template>
@@ -19,9 +21,27 @@ export default {
     AppList: List,
   },
   computed: {
-    todos() {
-      return this.$store.state.todos;
+    todoFilter() {
+      return this.$store.state.todoFilter;
     },
+    todos() {
+      if(this.todoFilter === "all") {
+        return this.$store.state.todos;
+      }
+      return this.$store.getters[this.todoFilter];
+    },
+  },
+  watch: {
+    // todos: function(todos) {
+    //   if (!todos.length) this.$store.dispatch('setEmptyMessage', this.todoFilter);
+    // },
+    $route: function(to) {
+      this.$store.dispatch("setTodoFilter", to.name)
+    }
+  },
+  created: function() {
+    // this.$store.dispatch('getTodos');
+    this.$store.dispatch('setTodoFilter', this.$route.name);
   },
 };
 </script>

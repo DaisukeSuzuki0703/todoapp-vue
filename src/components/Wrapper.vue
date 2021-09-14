@@ -2,11 +2,11 @@
   <div class="wrapper">
     <!-- <app-header></app-header> -->
     <main class="main">
-        <slot />
-        <div class="todos">
-          <slot name="todos" />
-        </div>
-      </main>
+      <slot />
+      <div class="todos">
+        <slot name="todos" />
+      </div>
+    </main>
     <!-- <app-footer></app-footer> -->
   </div>
 </template>
