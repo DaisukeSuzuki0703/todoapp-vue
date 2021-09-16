@@ -4,6 +4,7 @@
       <app-resister v-if="todoFilter === 'all'"></app-resister>
       <template v-slot:todos>
         <app-list :todos="todos" v-if="todos.length"></app-list>
+        <app-enpty-message v-else></app-enpty-message>
       </template>
     </app-wrapper>
   </div>
@@ -13,12 +14,14 @@
 import Wrapper from "../components/Wrapper";
 import Resister from "../components/Resister";
 import List from "../components/List";
+import EmptyMessage from "../components/EmptyMessage";
 
 export default {
   components: {
     AppWrapper: Wrapper,
     AppResister: Resister,
     AppList: List,
+    AppEnptyMessage: EmptyMessage,
   },
   computed: {
     todoFilter() {
@@ -32,9 +35,9 @@ export default {
     },
   },
   watch: {
-    // todos: function(todos) {
-    //   if (!todos.length) this.$store.dispatch('setEmptyMessage', this.todoFilter);
-    // },
+    todos: function(todos) {
+      if (!todos.length) this.$store.dispatch('setEmptyMessage', this.todoFilter);
+    },
     $route: function(to) {
       this.$store.dispatch("setTodoFilter", to.name)
     }

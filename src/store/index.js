@@ -15,10 +15,11 @@ export default new Vuex.Store({
       detail: '',
       completed: false,
     },
+    emptyMessage: '',
   },
   getters: {
-    finished: (state) => state.todos.filter((todo) => todo.completed),
-    unfinish: (state) => state.todos.filter((todo) => !todo.completed),
+    completed: (state) => state.todos.filter((todo) => todo.completed),
+    incomplete: (state) => state.todos.filter((todo) => !todo.completed),
   },
   mutations: {
     setTodoFilter(state, routeName) {
@@ -50,6 +51,15 @@ export default new Vuex.Store({
     },
     changeCompleted(state, todo) {
       state.targetTodo.completed = todo.completed;
+    },
+    setEmptyMessage(state, todoFilter) {
+      if(todoFilter === "completed") {
+        state.emptyMessage = "There are no completed TODOs."
+      }else if(todoFilter === "incomplete") {
+        state.emptyMessage = "There are no incomplete TODOs."
+      }else {
+        state.emptyMessage = "There is no registered TODO."
+      }
     }
   },
   actions: {
@@ -83,6 +93,9 @@ export default new Vuex.Store({
     changeCompleted({commit}, todo) {
       todo.completed = !todo.completed;
       commit("changeCompleted", todo);
+    },
+    setEmptyMessage({commit}, todoFilter) {
+      commit("setEmptyMessage", todoFilter);
     }
   }
 });
