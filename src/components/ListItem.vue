@@ -93,6 +93,7 @@ button {
   border-radius: 10px;
   border: none;
   background-color: #ffb6c1;
+  padding: 5px 10px;
 }
 .todo__completed {
   margin-right: 20px;
@@ -101,10 +102,6 @@ button {
 }
 .todo__edit__btn {
   background-color: #7fffd4;
-  padding: 5px 10px;
   margin-bottom: 5px;
-}
-.todo__delete__btn {
-  padding: 5px 10px;
 }
 </style>

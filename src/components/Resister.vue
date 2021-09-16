@@ -19,7 +19,7 @@
       />
     </div>
     <div class="submit">
-      <button class="submitbtn" @click="submit">送信</button>
+      <button class="submitbtn btn" @click="submit">resister</button>
     </div>
   </div>
 </template>
@@ -77,5 +77,11 @@ export default {
 .submit {
   text-align: right;
   margin-top: 10px;
+}
+.btn {
+  border-radius: 10px;
+  border: none;
+  background-color: #f4a460;
+  padding: 5px 10px;
 }
 </style>
