@@ -79,7 +79,7 @@ export default new Vuex.Store({
       localStorage.setItem(state.todoKeyWord, JSON.stringify(state.todos));
       state.targetTodo.title = "";
       state.targetTodo.detail = "";
-    }
+    },
   },
   actions: {
     setTodoFilter({commit}, routeName) {
@@ -107,11 +107,13 @@ export default new Vuex.Store({
       commit("showEditor", todo);
     },
     deleteTodo({ commit }, targetId) {
-      commit("deleteTodo", targetId)
+      commit("deleteTodo", targetId);
+      commit("initTargetTodo");
     },
     changeCompleted({commit}, todo) {
       todo.completed = !todo.completed;
       commit("changeCompleted", todo);
+      commit("initTargetTodo");
     },
     setEmptyMessage({commit}, todoFilter) {
       commit("setEmptyMessage", todoFilter);
@@ -129,6 +131,9 @@ export default new Vuex.Store({
         completed: state.targetTodo.completed,
       })
       commit("editTodo", updateTodo);
+    },
+    initTargetTodo({commit}) {
+      commit("initTargetTodo");
     }
   }
 });

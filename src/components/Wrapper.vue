@@ -25,7 +25,7 @@ export default ({
 
 <style scoped>
 .wrapper {
-  padding: 20px;
+  padding: 13px 20px 20px 20px;
 }
 .main {
   width: 100%;

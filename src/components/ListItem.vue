@@ -3,6 +3,7 @@
     <div class="todo__item__box">
       <button
         class="todo__completed btn"
+        :class="[todo.completed === true ? 'is-completed' : '']"
         type="button"
         @click="changeCompleted(todo)"
       >
@@ -19,7 +20,7 @@
       </div>
     </div>
     <div class="todo__option">
-      <button class="btn todo__edit__btn" @click="showEditor(todo)" v-if="todoFilter !== 'completed'">Edit</button>
+      <button class="btn todo__edit__btn" @click="showEditor(todo)" v-if="todo.completed === false">Edit</button>
       <button class="btn todo__delete__btn" @click="deleteTodo(todo.id)">Delete</button>
     </div>
   </li>
@@ -102,6 +103,9 @@ button {
   margin-right: 20px;
   padding: 10px 20px;
   background-color: #add8e6;
+}
+.todo__completed.is-completed {
+  background-color: gray;
 }
 .todo__edit__btn {
   background-color: #7fffd4;

@@ -13,7 +13,7 @@ export default ({
   components: {
     AppTodo: Todo,
     AppSidevarNavi: SidevarNavi,
-  } 
+  },
 })
 </script>
 
