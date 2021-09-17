@@ -16,6 +16,7 @@ export default new Vuex.Store({
       completed: false,
     },
     emptyMessage: '',
+    errorMessage: '',
   },
   getters: {
     completed: (state) => state.todos.filter((todo) => todo.completed),
@@ -45,6 +46,13 @@ export default new Vuex.Store({
     resisterTodo(state, targetTodo) {
       state.todos.unshift(targetTodo);
       localStorage.setItem(state.todoKeyWord, JSON.stringify(state.todos));
+    },
+    showError(state, payload) {
+      if (payload) {
+        state.errorMessage = payload.data;
+      } else {
+        state.errorMessage = 'ネットに接続がされていない、もしくはサーバーとの接続がされていません。ご確認ください。';
+      }
     },
     showEditor(state, todo) {
       state.targetTodo = Object.assign({}, todo);
@@ -92,6 +100,13 @@ export default new Vuex.Store({
       commit("getItem");
     },
     resisterTodo({ commit, state }) {
+      if (!state.targetTodo.title || !state.targetTodo.detail) {
+        commit({
+          type: 'showError',
+          data: 'タイトルと内容はどちらも必須項目です。',
+        });
+        return;
+      }
       let targetTodoLength = state.todos.length + 1;
       const targetTodo = Object.assign({}, {
         title: state.targetTodo.title,
@@ -100,15 +115,17 @@ export default new Vuex.Store({
         completed: false,
       })
       commit('resisterTodo', targetTodo);
-      state.targetTodo.title = '';
-      state.targetTodo.detail = '';
+      commit("initTargetTodo");
+      state.errorMessage = '';
     },
-    showEditor({commit}, todo) {
+    showEditor({commit, state}, todo) {
       commit("showEditor", todo);
+      state.errorMessage = '';
     },
-    deleteTodo({ commit }, targetId) {
+    deleteTodo({ commit, state }, targetId) {
       commit("deleteTodo", targetId);
       commit("initTargetTodo");
+      state.errorMessage = '';
     },
     changeCompleted({commit}, todo) {
       todo.completed = !todo.completed;
