@@ -1,11 +1,18 @@
 <template>
-  <ul class="todo__list" :class="[todoFilter !== 'all' ? 'is-large' : '']">
+  <transition-group
+    mode="in-out"
+    appear
+    tag="ul"
+    name="fadeList"
+    class="todo__list"
+    :class="[todoFilter !== 'all' ? 'is-large' : '']"
+  >
     <app-list-item
       v-for="todo in todos"
       :key="todo.id"
       :todo="todo"
     ></app-list-item>
-  </ul>
+  </transition-group>
 </template>
 
 <script>
@@ -26,6 +33,11 @@ export default {
   computed: {
     todoFilter() {
       return this.$store.state.todoFilter;
+    },
+  },
+  methods: {
+    beforeCreate(el) {
+      el.style.opacity = 0;
     },
   },
 };
@@ -54,5 +66,21 @@ export default {
 .todo__list::-webkit-scrollbar-thumb {
   background: #ffb6c1;
   border-radius: 5px;
+}
+.fadeList-enter-active,
+.fadeList-leave-active {
+  transition: all 0.5s ease;
+}
+.fadeList-enter,
+.fadeList-leave-to {
+  opacity: 0;
+  /* transform: translateY(30px); */
+}
+.fadeList-leave,
+.fadeList-enter-to {
+  opacity: 1;
+}
+.fadeList-move {
+  transition: transform 0.5s;
 }
 </style>

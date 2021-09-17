@@ -56,7 +56,7 @@ export default {
     },
     changeCompleted(todo) {
       this.$store.dispatch("changeCompleted", todo);
-    }
+    },
   },
 };
 </script>
@@ -77,6 +77,7 @@ button {
   background-color: #f5f5f5;
   margin-bottom: 10px;
   border-radius: 10px;
+  height: 61px;
 }
 .todo__item:last-child {
   margin-bottom: 0;
