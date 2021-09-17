@@ -42,7 +42,7 @@ export default {
   overflow-y: scroll;
 }
 .todo__list.is-large {
-  max-height: 560px;
+  max-height: 575px;
 }
 .todo__list::-webkit-scrollbar {
   width: 10px;

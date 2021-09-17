@@ -82,7 +82,7 @@ export default {
 .input__area {
   display: block;
   width: 100%;
-  margin-bottom: 10px;
+  margin-bottom: 5px;
   border-radius: 10px;
   border-color: #dcdcdc;
   padding: 2px 5px;
