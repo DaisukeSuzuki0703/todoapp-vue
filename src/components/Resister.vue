@@ -18,6 +18,9 @@
         v-model="targetTodoDetail"
       />
     </div>
+    <div class="error__area" v-if="errorMessage !== ''">
+      <p>{{errorMessage}}</p>
+    </div>
     <div class="submit">
       <button class="submitbtn btn" @click="(targetTodo.id === null) ? resisterTodo() : editTodo()">
         <template v-if="targetTodo.id === null">
@@ -59,6 +62,9 @@ export default {
         });
       },
     },
+    errorMessage() {
+      return this.$store.state.errorMessage;
+    }
   },
   methods: {
     resisterTodo() {
@@ -99,5 +105,9 @@ export default {
   border: none;
   background-color: #f4a460;
   padding: 5px 10px;
+}
+.error__area {
+  text-align: center;
+  color: red;
 }
 </style>
