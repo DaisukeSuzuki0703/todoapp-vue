@@ -6,13 +6,13 @@ const routes = [
     component: Todo,
   },
   {
-    name: 'finished',
-    path: '/finished',
+    name: 'completed',
+    path: '/completed',
     component: Todo,
   },
   {
-    name: 'unfinish',
-    path: '/unfinish',
+    name: 'incomplete',
+    path: '/incomplete',
     component: Todo,
   },
 ];

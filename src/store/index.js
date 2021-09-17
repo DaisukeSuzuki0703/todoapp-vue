@@ -10,23 +10,31 @@ export default new Vuex.Store({
     todos: [],
     todoFilter: '',
     targetTodo: {
-      id: 1,
+      id: null,
       title: '',
       detail: '',
       completed: false,
     },
+    emptyMessage: '',
   },
   getters: {
-    finished: (state) => state.todos.filter((todo) => todo.completed),
-    unfinish: (state) => state.todos.filter((todo) => !todo.completed),
+    completed: (state) => state.todos.filter((todo) => todo.completed),
+    incomplete: (state) => state.todos.filter((todo) => !todo.completed),
   },
   mutations: {
     setTodoFilter(state, routeName) {
-      console.log(routeName)
       state.todoFilter = routeName;
     },
     updateTextValue(state, payload) {
       state.targetTodo[payload.name] = payload.value;
+    },
+    initTargetTodo(state) {
+      state.targetTodo = {
+        id: null,
+        title: '',
+        detail: '',
+        completed: false,
+      };
     },
     getItem(state) {
       const targetTodos = JSON.parse(localStorage.getItem(state.todoKeyWord));
@@ -38,8 +46,8 @@ export default new Vuex.Store({
       state.todos.unshift(targetTodo);
       localStorage.setItem(state.todoKeyWord, JSON.stringify(state.todos));
     },
-    editTodo(state) {
-      console.log(state, "edit");
+    showEditor(state, todo) {
+      state.targetTodo = Object.assign({}, todo);
     },
     deleteTodo(state, targetId) {
       const newTodos = state.todos.filter(todo => {
@@ -50,6 +58,27 @@ export default new Vuex.Store({
     },
     changeCompleted(state, todo) {
       state.targetTodo.completed = todo.completed;
+      localStorage.setItem(state.todoKeyWord, JSON.stringify(state.todos));
+    },
+    setEmptyMessage(state, todoFilter) {
+      if(todoFilter === "completed") {
+        state.emptyMessage = "There are no completed TODOs."
+      }else if(todoFilter === "incomplete") {
+        state.emptyMessage = "There are no incomplete TODOs."
+      }else {
+        state.emptyMessage = "There is no registered TODO."
+      }
+    },
+    editTodo(state, todo) {
+      state.todos = state.todos.map((todoItem) => {
+        if(todo.id === todoItem.id) {
+          return todo;
+        }
+        return todoItem;
+      });
+      localStorage.setItem(state.todoKeyWord, JSON.stringify(state.todos));
+      state.targetTodo.title = "";
+      state.targetTodo.detail = "";
     }
   },
   actions: {
@@ -74,8 +103,8 @@ export default new Vuex.Store({
       state.targetTodo.title = '';
       state.targetTodo.detail = '';
     },
-    editTodo({commit}) {
-      commit("editTodo")
+    showEditor({commit}, todo) {
+      commit("showEditor", todo);
     },
     deleteTodo({ commit }, targetId) {
       commit("deleteTodo", targetId)
@@ -83,6 +112,23 @@ export default new Vuex.Store({
     changeCompleted({commit}, todo) {
       todo.completed = !todo.completed;
       commit("changeCompleted", todo);
+    },
+    setEmptyMessage({commit}, todoFilter) {
+      commit("setEmptyMessage", todoFilter);
+    },
+    editTodo({commit, state}) {
+      const targetTodo = state.todos.find(todo => todo.id === state.targetTodo.id);
+      if(targetTodo.title === state.targetTodo.title && targetTodo.detail === state.targetTodo.detail) {
+        commit("initTargetTodo");
+        return
+      }
+      const updateTodo = Object.assign({}, {
+        title: state.targetTodo.title,
+        detail: state.targetTodo.detail,
+        id: state.targetTodo.id,
+        completed: state.targetTodo.completed,
+      })
+      commit("editTodo", updateTodo);
     }
   }
 });
