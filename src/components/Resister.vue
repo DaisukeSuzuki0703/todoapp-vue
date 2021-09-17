@@ -19,7 +19,14 @@
       />
     </div>
     <div class="submit">
-      <button class="submitbtn btn" @click="submit">resister</button>
+      <button class="submitbtn btn" @click="(targetTodo.id === null) ? resisterTodo() : editTodo()">
+        <template v-if="targetTodo.id === null">
+          <span>resister</span>
+        </template>
+        <template v-else>
+          <span>update</span>
+        </template>
+      </button>
     </div>
   </div>
 </template>
@@ -27,6 +34,9 @@
 <script>
 export default {
   computed: {
+    targetTodo() {
+      return this.$store.state.targetTodo;
+    },
     targetTodoText: {
       get() {
         return this.$store.state.targetTodo.title;
@@ -51,8 +61,11 @@ export default {
     },
   },
   methods: {
-    submit() {
+    resisterTodo() {
       this.$store.dispatch('resisterTodo');
+    },
+    editTodo(todo) {
+      this.$store.dispatch("editTodo", todo);
     }
   }
 };
@@ -70,6 +83,9 @@ export default {
   display: block;
   width: 100%;
   margin-bottom: 10px;
+  border-radius: 10px;
+  border-color: #dcdcdc;
+  padding: 2px 5px;
 }
 .input__area:last-child {
   margin-bottom: 0;

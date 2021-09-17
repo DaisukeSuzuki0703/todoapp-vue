@@ -1,7 +1,7 @@
 <template>
   <div class="todos">
     <app-wrapper>
-      <app-resister v-if="todoFilter === 'all'"></app-resister>
+      <app-resister v-if="todoFilter !== 'completed'"></app-resister>
       <template v-slot:todos>
         <app-list :todos="todos" v-if="todos.length"></app-list>
         <app-enpty-message v-else></app-enpty-message>

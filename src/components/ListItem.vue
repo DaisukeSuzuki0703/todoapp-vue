@@ -19,7 +19,7 @@
       </div>
     </div>
     <div class="todo__option">
-      <button class="btn todo__edit__btn" @click="editTodo">Edit</button>
+      <button class="btn todo__edit__btn" @click="showEditor(todo)" v-if="todoFilter !== 'completed'">Edit</button>
       <button class="btn todo__delete__btn" @click="deleteTodo(todo.id)">Delete</button>
     </div>
   </li>
@@ -42,10 +42,13 @@ export default {
     isfinished() {
       return this.todo.completed;
     },
+    todoFilter() {
+      return this.$store.state.todoFilter;
+    }
   },
   methods: {
-    editTodo() {
-      this.$store.dispatch("editTodo");
+    showEditor(todo) {
+      this.$store.dispatch("showEditor", todo);
     },
     deleteTodo(targetId) {
       this.$store.dispatch("deleteTodo", targetId);
