@@ -22,6 +22,10 @@
       <p>{{errorMessage}}</p>
     </div>
     <div class="submit">
+      <div class="todo__detail">
+        <p>completed Todos: {{ completedTodosLength }}</p>
+        <p>incomplete Todos: {{ incompleteLengthTodosLength }}</p>
+      </div>
       <button class="submitbtn btn" @click="(targetTodo.id === null) ? resisterTodo() : editTodo()">
         <template v-if="targetTodo.id === null">
           <span>resister</span>
@@ -64,6 +68,12 @@ export default {
     },
     errorMessage() {
       return this.$store.state.errorMessage;
+    },
+    completedTodosLength() {
+      return this.$store.getters.completedLength;
+    },
+    incompleteLengthTodosLength() {
+      return this.$store.getters.incompleteLength;
     }
   },
   methods: {
@@ -99,6 +109,12 @@ export default {
 .submit {
   text-align: right;
   margin-top: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+.todo__detail > p {
+  margin: 0;
 }
 .btn {
   border-radius: 10px;

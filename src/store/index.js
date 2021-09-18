@@ -21,6 +21,8 @@ export default new Vuex.Store({
   getters: {
     completed: (state) => state.todos.filter((todo) => todo.completed),
     incomplete: (state) => state.todos.filter((todo) => !todo.completed),
+    completedLength: (state, getters) => getters.completed.length,
+    incompleteLength: (state, getters) => getters.incomplete.length,
   },
   mutations: {
     setTodoFilter(state, routeName) {
