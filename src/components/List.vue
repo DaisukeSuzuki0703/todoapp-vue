@@ -5,7 +5,7 @@
     tag="ul"
     name="fadeList"
     class="todo__list"
-    :class="[todoFilter !== 'all' ? 'is-large' : '']"
+    :class="[todoFilter === 'completed' ? 'is-large' : '']"
   >
     <app-list-item
       v-for="todo in todos"
@@ -82,5 +82,12 @@ export default {
 }
 .fadeList-move {
   transition: transform 0.5s;
+}
+
+@media screen and (max-width: 400px) {
+  .todo__list {
+    max-height: 1000px;
+    overflow-y: auto;
+  }
 }
 </style>

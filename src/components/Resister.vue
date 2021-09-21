@@ -126,4 +126,8 @@ export default {
   text-align: center;
   color: red;
 }
+@media screen and (max-width: 400px) {
+  .input__area {
+  }
+}
 </style>

@@ -112,4 +112,12 @@ button {
   background-color: #7fffd4;
   margin-bottom: 5px;
 }
+@media screen and (max-width: 400px) {
+  .btn {
+    border-radius: 5px;
+    border: none;
+    background-color: #ffb6c1;
+    padding: 5px 10px;
+  }
+}
 </style>
