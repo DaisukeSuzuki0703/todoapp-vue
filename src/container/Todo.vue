@@ -1,5 +1,5 @@
 <template>
-  <div class="todos">
+  <div class="todos" v-if="showContent === false" :class="[todoFilter === 'completed' ? 'is-large' : '']">
     <app-wrapper>
       <app-resister v-if="todoFilter !== 'completed'"></app-resister>
       <template v-slot:todos>
@@ -33,6 +33,9 @@ export default {
       }
       return this.$store.getters[this.todoFilter];
     },
+    showContent() {
+      return this.$store.state.showContent;
+    }
   },
   watch: {
     todos: function(todos) {
@@ -52,7 +55,16 @@ export default {
 .todos {
   width: 80%;
   height: 100%;
+  min-height: 618px;
   background-color: #fff;
   /* padding: 20px; */
+}
+/* .todos.is-large {
+  min-height: 618px;
+} */
+@media screen and (max-width: 400px) {
+  .todos {
+    width: 100%;
+  }
 }
 </style>

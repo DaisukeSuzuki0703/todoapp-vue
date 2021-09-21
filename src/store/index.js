@@ -15,6 +15,7 @@ export default new Vuex.Store({
       detail: '',
       completed: false,
     },
+    showContent: false,
     emptyMessage: '',
     errorMessage: '',
   },
@@ -38,6 +39,7 @@ export default new Vuex.Store({
         detail: '',
         completed: false,
       };
+      state.showContent = false;
     },
     getItem(state) {
       const targetTodos = JSON.parse(localStorage.getItem(state.todoKeyWord));
@@ -90,6 +92,9 @@ export default new Vuex.Store({
       state.targetTodo.title = "";
       state.targetTodo.detail = "";
     },
+    modalOpen(state) {
+      state.showContent = !state.showContent
+    }
   },
   actions: {
     setTodoFilter({commit}, routeName) {
@@ -153,6 +158,9 @@ export default new Vuex.Store({
     },
     initTargetTodo({commit}) {
       commit("initTargetTodo");
+    },
+    modalOpen({commit}) {
+      commit("modalOpen");
     }
   }
 });
